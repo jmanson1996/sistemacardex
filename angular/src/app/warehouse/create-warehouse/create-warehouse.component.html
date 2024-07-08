@@ -1,0 +1,122 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #editRoleForm="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'CreateWarehouse' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <tabset>
+      <tab [heading]="'Details' | localize" class="pt-3 px-2">
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="name">
+            {{ "name" | localize }}
+          </label>
+          <div class="col-md-9">
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              id="name"
+              required
+              minlength="2"
+              maxlength="32"
+              [(ngModel)]="Warehouse.name"
+              #nameModel="ngModel"
+              #nameEl
+            />
+            <abp-validation-summary
+              [control]="nameModel"
+              [controlEl]="nameEl"
+            ></abp-validation-summary>
+          </div>
+        </div>
+        <div class="form-group row required">
+          <label class="col-md-3 col-form-label" for="location">
+            {{ "location" | localize }}
+          </label>
+          <div class="col-md-9">
+            <input
+              type="text"
+              class="form-control"
+              name="location"
+              id="location"
+              required
+              minlength="2"
+              maxlength="32"
+              [(ngModel)]="Warehouse.location"
+              #locationModel="ngModel"
+              #locationEl
+            />
+            <abp-validation-summary
+              [control]="locationModel"
+              [controlEl]="locationEl"
+            ></abp-validation-summary>
+          </div>
+        </div>
+
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="phone">
+              {{ "phone" | localize }}
+            </label>
+            <div class="col-md-9">
+              <input
+                type="text"
+                class="form-control"
+                name="phone"
+                id="phone"
+                phone
+                minlength="2"
+                maxlength="32"
+                [(ngModel)]="Warehouse.phone"
+                #phoneModel="ngModel"
+                #phoneEl
+              />
+              <abp-validation-summary
+                [control]="phoneModel"
+                [controlEl]="phoneEl"
+              ></abp-validation-summary>
+            </div>
+          </div>
+
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="WarehouseType">
+              {{ "type" | localize }}
+            </label>
+            <div class="col-md-9">
+                <ng-select [items]="warehouseType"
+                            bindLabel="name"
+                            name="type"
+                            bindValue="id"
+                            placeholder="Select an item"
+                            [(ngModel)]="Warehouse.type">
+                </ng-select>
+            </div>
+          </div>
+
+          <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="Manager">
+              {{ "manager" | localize }}
+            </label>
+            <div class="col-md-9">
+                <ng-select [items]="users"
+                            bindLabel="fullName"
+                            name="Manager"
+                            bindValue="id"
+                            placeholder="Select an item"
+                            [(ngModel)]="Warehouse.userId">
+                </ng-select>
+            </div>
+          </div>
+      </tab>
+    </tabset>
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!editRoleForm.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

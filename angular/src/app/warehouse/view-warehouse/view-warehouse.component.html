@@ -1,0 +1,62 @@
+<div [@routerTransition]>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <h1>{{ "Warehouse" | localize }}</h1>
+          </div>
+          <div class="col-6 text-right">
+            <a [routerLink]="['/app/warehouse']"
+              class="btn bg-dark"
+              >
+              <i class="fa-solid fa-arrow-left"></i>
+              {{ "Return" | localize }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content px-2">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2 col-md-2">
+                                <div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd nav-pills-icons" id="v-pills-tab-with-icon" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'inventory'}" (click)="selectTab('inventory')" id="v-pills-profile-tab-icons" role="tab" aria-controls="v-pills-profile-icons" aria-selected="selectedTab === 'profile'">
+                                        <i class="fa-solid fa-folder-open"></i>
+                                        {{ "Inventory" | localize }}
+                                    </a>
+                                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'orders'}" (click)="selectTab('orders')" id="v-pills-profile-tab-icons" role="tab" aria-controls="v-pills-profile-icons" aria-selected="selectedTab === 'profile'">
+                                      <i class="fa-solid fa-truck"></i>
+                                      {{ "Orders" | localize }}
+                                    </a>
+                                    <a class="nav-link" [ngClass]="{'active': selectedTab === 'addProducts'}" (click)="selectTab('addProducts')" id="v-pills-profile-tab-icons" role="tab" aria-controls="v-pills-profile-icons" aria-selected="selectedTab === 'profile'">
+                                      <i class="fa-brands fa-product-hunt"></i>
+                                      {{ "AddProductsMain" | localize }}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-10 col-md-10">
+                                <div class="tab-content" id="v-pills-with-icon-tabContent">
+                                    <div class="tab-pane fade" [ngClass]="{'active show': selectedTab === 'inventory'}" id="v-pills-profile-icons" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
+                                        <app-inventory></app-inventory>
+                                    </div>
+                                    <div class="tab-pane fade" [ngClass]="{'active show': selectedTab === 'orders'}" id="v-pills-profile-icons" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
+                                      <app-inventory></app-inventory>
+                                    </div>
+                                    <div class="tab-pane fade" [ngClass]="{'active show': selectedTab === 'addProducts'}" id="v-pills-profile-icons" role="tabpanel" aria-labelledby="v-pills-profile-tab-icons">
+                                      <app-add-product-main></app-add-product-main>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
